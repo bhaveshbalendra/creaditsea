@@ -6,6 +6,7 @@ import ReportPage from "./pages/ReportPage";
 import ReportsPage from "./pages/ReportsPage";
 import UploadPage from "./pages/UploadPage";
 import { store } from "./store/store";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
             <Route path="/reports" element={<ReportsPage />} />
             <Route path="/report/:id" element={<ReportPage />} />
             <Route path="/upload" element={<UploadPage />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </Provider>

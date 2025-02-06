@@ -41,6 +41,7 @@ const UploadPage = () => {
     try {
       const response = await axios.post(`${baseURL}/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true,
       });
 
       if (response.data.success) {

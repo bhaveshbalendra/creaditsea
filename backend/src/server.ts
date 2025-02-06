@@ -1,12 +1,12 @@
 import cors from "cors";
 import { config } from "dotenv";
-import express from "express";
+import express, { Express, Request, Response } from "express";
 import creditReportRoutes from "./routes/creditReports";
 import connectDB from "./service/dbConnector";
 
 config();
 
-export const app = express();
+export const app: Express = express();
 
 connectDB();
 
@@ -23,8 +23,8 @@ app.use(
 );
 
 // Default Route
-app.get("/", (req, res) => {
-  res.send("hello");
+app.get("/", (request: Request, response: Response) => {
+  response.send("hello");
 });
 app.use("/api", creditReportRoutes);
 

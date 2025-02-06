@@ -4,10 +4,7 @@ import { CreditReportModel } from "../models/creditReports";
 import parseXML from "../utils/xmlParser";
 
 // Controller to handle file upload and XML parsing
-const handleUploadXML = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
+const handleUploadXML = async (req: Request, res: Response): Promise<any> => {
   try {
     // Check if file is uploaded
     if (!req.file) {
@@ -75,7 +72,7 @@ const handleUploadXML = async (
 };
 
 // Fetch all reports with selected fields
-const handleGetReports = async (req: Request, res: Response) => {
+const handleGetReports = async (req: Request, res: Response): Promise<any> => {
   try {
     const reports = await CreditReportModel.find();
     res.json(reports);
@@ -86,7 +83,10 @@ const handleGetReports = async (req: Request, res: Response) => {
 };
 
 // Fetch a report by ID
-const handleGetReportById = async (req: Request, res: Response) => {
+const handleGetReportById = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
   try {
     const report = await CreditReportModel.findById(req.params.id);
     if (!report) {
@@ -99,7 +99,10 @@ const handleGetReportById = async (req: Request, res: Response) => {
   }
 };
 
-const handleGetReportIds = async (req: Request, res: Response) => {
+const handleGetReportIds = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
   try {
     const reports = await CreditReportModel.find().select(
       "_id basicDetails.subscriberName"
@@ -122,7 +125,10 @@ const handleGetReportIds = async (req: Request, res: Response) => {
 };
 
 // handles delete report
-const handleDeleteReportById = async (req: Request, res: Response) => {
+const handleDeleteReportById = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
   try {
     const report = await CreditReportModel.findByIdAndDelete(req.params.id);
 
